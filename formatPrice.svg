@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" direction="ltr" width="545.8966979980469"
+    height="408.5172882080078"
+    viewBox="345.9309387207031 212.51724243164062 545.8966979980469 408.5172882080078"
+    stroke-linecap="round" stroke-linejoin="round"
+    encoding="UTF-8&quot;">
+    <g transform="matrix(1, 0, 0, 1, 435.3103, 244.5172)" opacity="1">
+        <path
+            d="M7,-0.0044 L127.2587,-0.0797 Q134.2587,-0.0841 134.2575,6.9159 L134.2383,115.5169 Q134.2371,122.5169 127.2376,122.4338 L7.2034,121.0096 Q0.2039,120.9265 0.2368,113.9266 L0.7351,7.8292 Q0.768,0.8293 7.7678,0.7737 L126.362,-0.1685 Q133.3618,-0.2241 133.3579,6.7759 L133.2986,114.5481 Q133.2947,121.5481 126.2947,121.5646 L6.1094,121.8464 Q-0.8906,121.8629 -0.8427,114.863 L-0.1021,6.661 Q-0.0541,-0.3388 7,-0.0044 "
+            fill="none" stroke="#1d1d1d" stroke-width="3.5" />
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 711.1724, 246.1724)" opacity="1">
+        <path
+            d="M7,0.0063 L127.7331,0.1158 Q134.7331,0.1221 134.7613,7.1221 L135.1964,115.2527 Q135.2245,122.2526 128.2249,122.1797 L6.9652,120.9162 Q-0.0344,120.8433 -0.0939,113.8435 L-0.9953,7.869 Q-1.0549,0.8693 5.9451,0.8408 L128.0749,0.3434 Q135.0749,0.3149 134.9759,7.3142 L133.4599,114.5834 Q133.361,121.5827 126.361,121.5579 L6.1636,121.1325 Q-0.8363,121.1078 -0.8089,114.1078 L-0.3864,6.3208 Q-0.359,-0.6792 7,0.0063 "
+            fill="none" stroke="#1d1d1d" stroke-width="3.5" />
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 532.4138, 436.5172)" opacity="1">
+        <g>
+            <defs>
+                <mask id="shape_GsFxujko0C5krdnSDBtf4_clip">
+                    <rect x="-63.034423828125" y="-230.9081391962884" width="328.29330329896914"
+                        height="200.7697642478862" fill="white" />
+                    <path
+                        d="M 156.19727602158403 -135.4428393820992 L 165.25887947084416 -130.1383749484022 L 156.13427679316146 -124.94302837917073"
+                        fill="none" stroke="none" />
+                </mask>
+            </defs>
+            <g mask="url(#shape_GsFxujko0C5krdnSDBtf4_clip)">
+                <rect x="-100" y="-100" width="328.29330329896914" height="200.7697642478862"
+                    fill="transparent" stroke="none" />
+                <path d="M36.965576171875,-130.9081391962884L165.25887947084416,-130.1383749484022"
+                    fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-dasharray="none"
+                    stroke-dashoffset="none" />
+            </g>
+            <path
+                d="M 156.19727602158403 -135.4428393820992 L 165.25887947084416 -130.1383749484022 L 156.13427679316146 -124.94302837917073"
+                fill="none" stroke="#1d1d1d" stroke-width="3.5" />
+        </g>
+    </g>
+    <g
+        transform="matrix(1, 0, 0, 1, 460.4354, 281.2845) scale(1.3576371888718621, 1.3576371888718621)"
+        opacity="1">
+        <g>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical"
+                stroke="rgb(249, 250, 251)" stroke-width="2px" fill="rgb(249, 250, 251)">
+                <tspan alignment-baseline="mathematical" x="0.79296875px" y="12.5px">input</tspan>
+            </text>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical" stroke="none"
+                stroke-width="2px" fill="#1d1d1d">
+                <tspan alignment-baseline="mathematical" x="0.79296875px" y="12.5px">input</tspan>
+            </text>
+        </g>
+    </g>
+    <g
+        transform="matrix(1, 0, 0, 1, 723.5227, 282.9397) scale(1.3576371888718621, 1.3576371888718621)"
+        opacity="1">
+        <g>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical"
+                stroke="rgb(249, 250, 251)" stroke-width="2px" fill="rgb(249, 250, 251)">
+                <tspan alignment-baseline="mathematical" x="0.888671875px" y="12.5px">output</tspan>
+            </text>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical" stroke="none"
+                stroke-width="2px" fill="#1d1d1d">
+                <tspan alignment-baseline="mathematical" x="0.888671875px" y="12.5px">output</tspan>
+            </text>
+        </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 377.9309, 524.2414)" opacity="1">
+        <g>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical"
+                stroke="rgb(249, 250, 251)" stroke-width="2px" fill="rgb(249, 250, 251)">
+                <tspan alignment-baseline="mathematical" x="50.078125px" y="12.3017578125px">price:</tspan>
+                <tspan alignment-baseline="mathematical" x="116.29296875px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="124.517578125px" y="12.3017578125px">30</tspan>
+                <tspan alignment-baseline="mathematical" x="157.9140625px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="0px" y="44.6982421875px">
+                </tspan>
+                <tspan alignment-baseline="mathematical" x="20.1123046875px" y="44.6982421875px">
+                    currency:</tspan>
+                <tspan alignment-baseline="mathematical" x="133.12109375px" y="44.6982421875px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="141.353515625px" y="44.6982421875px">USD</tspan>
+            </text>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical" stroke="none"
+                stroke-width="2px" fill="#1d1d1d">
+                <tspan alignment-baseline="mathematical" x="50.078125px" y="12.3017578125px">price:</tspan>
+                <tspan alignment-baseline="mathematical" x="116.29296875px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="124.517578125px" y="12.3017578125px">30</tspan>
+                <tspan alignment-baseline="mathematical" x="157.9140625px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="0px" y="44.6982421875px">
+                </tspan>
+                <tspan alignment-baseline="mathematical" x="20.1123046875px" y="44.6982421875px">
+                    currency:</tspan>
+                <tspan alignment-baseline="mathematical" x="133.12109375px" y="44.6982421875px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="141.353515625px" y="44.6982421875px">USD</tspan>
+            </text>
+        </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 723.3103, 541.8965)" opacity="1">
+        <g>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical"
+                stroke="rgb(249, 250, 251)" stroke-width="2px" fill="rgb(249, 250, 251)">
+                <tspan alignment-baseline="mathematical" x="14.3369140625px" y="12.5px">"$30"</tspan>
+            </text>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical" stroke="none"
+                stroke-width="2px" fill="#1d1d1d">
+                <tspan alignment-baseline="mathematical" x="14.3369140625px" y="12.5px">"$30"</tspan>
+            </text>
+        </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 590.8965, 568.931)" opacity="1">
+        <g>
+            <defs>
+                <mask id="shape_UR5-i1HHi3ut8fd6kVHWj_clip">
+                    <rect x="-105.82757568359375" y="-111.77657109219922" width="324.7415619024626"
+                        height="200.62206575775994" fill="white" />
+                    <path
+                        d="M 109.84701311055242 -16.449786125206394 L 118.91398621886883 -11.154505334439275 L 109.79465197973455 -5.94991668259048"
+                        fill="none" stroke="none" />
+                </mask>
+            </defs>
+            <g mask="url(#shape_UR5-i1HHi3ut8fd6kVHWj_clip)">
+                <rect x="-100" y="-100" width="324.7415619024626" height="200.62206575775994"
+                    fill="transparent" stroke="none" />
+                <path
+                    d="M-5.82757568359375,-11.77657109219922L118.91398621886883,-11.154505334439275"
+                    fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-dasharray="none"
+                    stroke-dashoffset="none" />
+            </g>
+            <path
+                d="M 109.84701311055242 -16.449786125206394 L 118.91398621886883 -11.154505334439275 L 109.79465197973455 -5.94991668259048"
+                fill="none" stroke="#1d1d1d" stroke-width="3.5" />
+        </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 388.4137, 411.138)" opacity="1">
+        <g>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical"
+                stroke="rgb(249, 250, 251)" stroke-width="2px" fill="rgb(249, 250, 251)">
+                <tspan alignment-baseline="mathematical" x="33.3798828125px" y="12.3017578125px">
+                    price:</tspan>
+                <tspan alignment-baseline="mathematical" x="99.5947265625px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="107.8193359375px" y="12.3017578125px">
+                    3000</tspan>
+                <tspan alignment-baseline="mathematical" x="174.62109375px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="0px" y="44.6982421875px">
+                </tspan>
+                <tspan alignment-baseline="mathematical" x="14.896484375px" y="44.6982421875px">
+                    currency:</tspan>
+                <tspan alignment-baseline="mathematical" x="127.9052734375px" y="44.6982421875px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="136.138671875px" y="44.6982421875px">KRW</tspan>
+            </text>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical" stroke="none"
+                stroke-width="2px" fill="#1d1d1d">
+                <tspan alignment-baseline="mathematical" x="33.3798828125px" y="12.3017578125px">
+                    price:</tspan>
+                <tspan alignment-baseline="mathematical" x="99.5947265625px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="107.8193359375px" y="12.3017578125px">
+                    3000</tspan>
+                <tspan alignment-baseline="mathematical" x="174.62109375px" y="12.3017578125px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="0px" y="44.6982421875px">
+                </tspan>
+                <tspan alignment-baseline="mathematical" x="14.896484375px" y="44.6982421875px">
+                    currency:</tspan>
+                <tspan alignment-baseline="mathematical" x="127.9052734375px" y="44.6982421875px"> </tspan>
+                <tspan alignment-baseline="mathematical" x="136.138671875px" y="44.6982421875px">KRW</tspan>
+            </text>
+        </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 697.9311, 429.3448)" opacity="1">
+        <g>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical"
+                stroke="rgb(249, 250, 251)" stroke-width="2px" fill="rgb(249, 250, 251)">
+                <tspan alignment-baseline="mathematical" x="25.1123046875px" y="12.5px">"3000원"</tspan>
+            </text>
+            <text font-size="24px" font-family="'tldraw_draw', sans-serif" font-style="normal"
+                font-weight="normal" line-height="32.400000000000006px"
+                dominant-baseline="mathematical" alignment-baseline="mathematical" stroke="none"
+                stroke-width="2px" fill="#1d1d1d">
+                <tspan alignment-baseline="mathematical" x="25.1123046875px" y="12.5px">"3000원"</tspan>
+            </text>
+        </g>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 572.6896, 436.5172)" opacity="1">
+        <g>
+            <defs>
+                <mask id="shape_H2XjyWY4Fdjq6CJUvirDH_clip">
+                    <rect x="-77.13796997070312" y="-92.25754955200688" width="288.87975587373904"
+                        height="200.62224017916083" fill="white" />
+                    <path
+                        d="M 102.68549593510478 3.051159596215168 L 111.74178590303593 8.364690627153955 L 102.61198806248045 13.550902287951098"
+                        fill="none" stroke="none" />
+                </mask>
+            </defs>
+            <g mask="url(#shape_H2XjyWY4Fdjq6CJUvirDH_clip)">
+                <rect x="-100" y="-100" width="288.87975587373904" height="200.62224017916083"
+                    fill="transparent" stroke="none" />
+                <path
+                    d="M22.862030029296875,7.7424504479931215L111.74178590303593,8.364690627153955"
+                    fill="none" stroke="#1d1d1d" stroke-width="3.5" stroke-dasharray="none"
+                    stroke-dashoffset="none" />
+            </g>
+            <path
+                d="M 102.68549593510478 3.051159596215168 L 111.74178590303593 8.364690627153955 L 102.61198806248045 13.550902287951098"
+                fill="none" stroke="#1d1d1d" stroke-width="3.5" />
+        </g>
+    </g>
+</svg>

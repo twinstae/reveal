@@ -1,40 +1,154 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/fromm.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				<textarea data-template>
+					# 동료를 당황시키지 않는 <br />순수 함수 적정 기술
+
+					김태희 
+
+					노머스 **Fromm팀** 웹 프론트 개발자
+
+					---
+
+					## 순서
+					- 함수형이 받아들여지려면
+					- 순수함수 적정기술
+					- <div><div class="left">텍스트 필드<span class="middle">x</span></div> style</div>
+					- <div><div class="left">가격 포맷 <span class="middle">x</span></div> context</div>
+					- <div><div class="left">모달 <span class="middle">x</span></div> routing</div>
+					- <div><div class="left">실시간 검색 <span class="middle">x</span></div> optimization</div>
+					- <div><div class="left">결제 수단 <span class="middle">x</span></div> domain logic</div>
+
+
+					---
+
+					## 함수형이 받아들여지려면
+
+					---
+
+					### "함수형 좋아요!""
+					불변이 어쩌구
+
+					---
+					<!-- .slide: data-transition="slide-in fade-out" -->
+					### "낯선 것은 어려운 것이 아니다"
+					명령형이나 객체지향이라고 더 쉽진 않음. 클래스, 상속...
+
+					---
+					<!-- .slide: data-transition="fade-in slide-out" -->
+					### 낯선 것이 더 어렵게 느껴진다
+					
+					함수와 명령 중에 무엇이 더 쉽게 보이나요?
+					
+					---
+
+					### 함수스럽지 않은 기술과 생태계...
+
+					---
+
+					### 함수형은 이해할 수 없는 레거시로 전락!
+
+					---
+
+					### 점진적으로<br /> 함수형를 도입할 수는 없을까?
+					
+					---
+
+					### 누구나 이해할 수 있는<br /> 적정기술부터 시작해보려 한다
+
+					바로 순수함수다!
+
+					---
+
+					## 순수 함수란?
+
+					의존성
+					입력 -> 출력
+					효과
+
+					---
+
+					## textfield 의 사례는 상태가 얼마나 제 정신으로 다루기 힘든지 보여준다.
+			
+					첫 요구사항 소개한다
+
+					피그마
+					텍스트 필드를 만들 거에요
+
+					너는 고통 받을 것이다
+					---
+					## 
+
+					---
+
+					### 상태와 상태에서 계산할 수 있는 것을 구분하기
+
+					---
+
+					## routing 연결되는 modal의 사례는 순수 함수 상태 동기화의 위력을 보여준다
+
+					---
+
+					## 금액 포맷
+
+					![](./formatPrice.svg)
+
+					---
+
+					## 명시적 매개변수로 의존성을 주입하는 것의 장점을 보여준다
+
+					---
+
+					## 검색의 사례는 순수 함수가 test를 쉽게 하고, 최적화를 쉽게 하고, 구현체를 갈아끼우기 쉽게 만드는 걸 보여준다
+
+					해보진 않았지만 내부를 rescript로 갈아 끼울 수도 있을 것이다.
+					---
+
+					## 결제 수단 노출의 사례는 복잡한 domain을 논리적 함수로 모델링하는 것의 강력함을 보여준다
+
+					---
+
+					## 결론
+
+					
+				</textarea>
+			</section>
 		</div>
+	</div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
 </html>
