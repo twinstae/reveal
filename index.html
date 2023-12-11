@@ -7,6 +7,8 @@
 
 	<title>reveal.js</title>
 
+	<link rel="stylesheet" as="style" crossorigin
+		href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 	<link rel="stylesheet" href="dist/reset.css">
 	<link rel="stylesheet" href="dist/reveal.css">
 	<link rel="stylesheet" href="dist/theme/fromm.css">
@@ -29,100 +31,282 @@
 					---
 
 					## 순서
-					- 함수형이 받아들여지려면
-					- 순수함수 적정기술
+					- 프롬과 도메인 소개
+					- 함수형이 받아들여지려면?
+					- 순수함수란?
 					- <div><div class="left">텍스트 필드<span class="middle">x</span></div> style</div>
 					- <div><div class="left">가격 포맷 <span class="middle">x</span></div> context</div>
-					- <div><div class="left">모달 <span class="middle">x</span></div> routing</div>
 					- <div><div class="left">실시간 검색 <span class="middle">x</span></div> optimization</div>
 					- <div><div class="left">결제 수단 <span class="middle">x</span></div> domain logic</div>
 
+					---
+
+					## 프롬
+
+					아티스트와의 채팅부터, 굿즈, 공연, 영상 등의 제작부터 판매까지 모든 것을 하나의 플랫폼에서 
+
+					![](./arti-list.png)
+					![](./order.png)
+					![](./payment.png)
 
 					---
 
-					## 함수형이 받아들여지려면
+					## 함수형이 받아들여지려면?
+
+					- 거꾸로 말하면 함수형은 왜 받아들여지지 못할까?
 
 					---
 
 					### "함수형 좋아요!""
-					불변이 어쩌구
+					
+					- 불변, lazy, 일급함수, 순수함수, 모나드, 커링 ...
+					- "유지보수하기 좋은 코드를 짜게 해줍니다"
+					- "읽기 쉽고 간결한 코드를 짜게 해줍니다"
+					- ...
 
 					---
-					<!-- .slide: data-transition="slide-in fade-out" -->
 					### "낯선 것은 어려운 것이 아니다"
-					명령형이나 객체지향이라고 더 쉽진 않음. 클래스, 상속...
+					명령형이나 객체지향이라고 더 쉽진 않음. 클래스, 상속... 오늘도 명령형의 고통을 많이 보실 겁니다.
 
 					---
-					<!-- .slide: data-transition="fade-in slide-out" -->
-					### 낯선 것이 더 어렵게 느껴진다
+					### 하지만 낯선 것이 더 어렵게 느껴진다
 					
-					함수와 명령 중에 무엇이 더 쉽게 보이나요?
-					
-					---
+					함수와 명령형 코드 중에 무엇이 더 쉽게 느껴지시나요?
 
-					### 함수스럽지 않은 기술과 생태계...
+					```ts
+					// 함수형
+					const total = items.reduce((acc, item) => item.price, 0)
 
-					---
-
-					### 함수형은 이해할 수 없는 레거시로 전락!
-
-					---
-
-					### 점진적으로<br /> 함수형를 도입할 수는 없을까?
+					// 명령형
+					let total = 0
+					for (const item of items) {
+						total += item.price
+					}
+					```
 					
 					---
 
-					### 누구나 이해할 수 있는<br /> 적정기술부터 시작해보려 한다
+					### 함수스럽지 않은 기술과 생태계
 
-					바로 순수함수다!
+					- 리액트 같은 주류 프레임워크가 함수형을 지향함에도
+					- JS는 영속 자료구조를 지원하지 않고
+						- <span class='text-sm'> (tuple과 record proposal의 stage가 몇인지 세고 있다)</span>
+					- 라이브러리들도 명령적인 api가 많음
+
+					---
+
+					### 점진적으로 함수형를 도입할 수는 없을까?
+					
+					---
+
+					### 누구나 이해할 수 있는 <br/>적정기술부터 시작해보자
+
+					바로 순수함수!
 
 					---
 
 					## 순수 함수란?
 
-					의존성
-					입력 -> 출력
-					효과
+					우리가 수학 시간에 배우는 바로 그 함수.
 
+					![](./func.svg)
+
+					```ts
+					function (입력: X): Y {
+						return 출력
+					}
+					```
 					---
+					<!-- .slide: class="hstack" -->
+					<img src='./textfields.png' class='left' />
+				
+					<div>
 
-					## textfield 의 사례는 상태가 얼마나 제 정신으로 다루기 힘든지 보여준다.
+					## textfield 만들기
 			
-					첫 요구사항 소개한다
+					디자인 시스템에 정의된<br/> textfields 컴포넌트는<br/> **상태**에 따라 모양이 다릅니다
 
-					피그마
-					텍스트 필드를 만들 거에요
+					- enabled, focused, activated
+					- valid, disabled, error
 
-					너는 고통 받을 것이다
-					---
-					## 
+					</div>
 
 					---
+					<!-- .slide: class="large-code hstack" -->
 
-					### 상태와 상태에서 계산할 수 있는 것을 구분하기
+					<img src='./imperative.png' class='left' />
+
+					<div>
+
+					### 첫 시도. 명령형으로 구현하기
+
+					- 일종의 유한 상태 기계
+					- 각 event마다 다른 상태로 전이
+						- ex 값을 입력하면 activated 로 전이
+					- 그런데 전이와 조건문이 너무 많은데?
+
+					</div>
 
 					---
 
-					## routing 연결되는 modal의 사례는 순수 함수 상태 동기화의 위력을 보여준다
+					### 결국 수 많은 에러와 엣지 케이스!
+
+					![](./review1.png)
+
+					---
+
+					### **상태**와 **계산**을 구분하기
+					---
+
+					### 진짜 상태는 무엇인가?
+
+					- input이 focus되어 있는가?
+					- input에 값이 있는가?
+					- input이 disable되어 있는가?
+					- input에 에러가 있는가?
+
+					---
+
+					### 파생 상태를 계산하는 순수함수 만들기
+
+					```ts
+
+					export function computeState({ isFocused, value, disabled, showError }): InputState {
+						if (disabled) {
+							return 'disabled';
+						}
+						if (isFocused) {
+							if (value.length > 0) {
+								return 'activated';
+							}
+							return 'focused';
+						}
+						if (showError) {
+							return 'error';
+						}
+				   
+						if (value.length === 0) {
+							return 'enabled';
+						}
+				   
+						return 'valid';
+					}
+					```
+
+					---
+
+					### 순수 함수는 테스트하기 쉽다
+					
+					```ts
+					test('focus인데 입력값이 없으면 focused 상태다', () => {
+						expect(computeState({
+							disabled: false,
+							value: '',
+							isFocused: true
+						})).toBe('focused');
+					});
+
+					test('focus인데 입력값이 있으면 activated 상태다', () => {
+						expect(computeState({
+							disabled: false,
+							value: 'test',
+							isFocused: true
+						})).toBe('activated');
+					});
+					```
+					---
+
+					### 엄청나게 줄어든 코드!
+
+					- component는 상태 동기화에만 집중하고
+					- 디자이너가 의도한 로직은 순수함수가 담당
+
+					![](./small-code.png)
 
 					---
 
 					## 금액 포맷
 
-					![](./formatPrice.svg)
+					같은 상품이라도
+					<br/> 사용자가 설정한 통화에 따라 다르게 포맷되어야 함
+					<br/>원화는 뒤에 "원"이 붙고, 달러는 앞에 "$"가 붙음
+
+					<div class='r-hstack'>
+
+					![](./KRW.png)
+
+					![](./USD.png)
+
+					</div>
 
 					---
 
-					## 명시적 매개변수로 의존성을 주입하는 것의 장점을 보여준다
+					### 숨겨진 외부 의존성
+
+					- context로 설정을 주입 받는 건 매우 좋지만.
+					- 유연함을 떨어트리고, react hook의 법칙에 종속됨
+					
+					```ts
+					const useUtils = () => {
+						const [currency] = useAtom(currencyAtom); // <- jotai 의존성!
+
+						const formatPrice = useCallback(
+							(price: number) => {
+								const formattedPrice = addCommaToNumber(price ?? 0);
+				
+								return currency.code === 'KRW' ? `${formattedPrice}원` : `$${formattedPrice}`;
+							},
+							[currency.code]
+						);
+						return { formatPrice }
+					}
+
+					const { formatPrice } = useUtils();
+
+					formatPrice(1000); // "1,000원"
+					```
 
 					---
 
-					## 검색의 사례는 순수 함수가 test를 쉽게 하고, 최적화를 쉽게 하고, 구현체를 갈아끼우기 쉽게 만드는 걸 보여준다
+					### 이미 구매한 물건의 <br />가격이 잘못 표기되는 에러!
+					![](./price-error.png)
+
+					---
+
+					### 그러면 어떻게?<br/> 매개변수로 명시적으로 주입하자
+
+					```ts [2,5,14,15]
+					const [currency] = useAtom(currencyAtom);
+					// currency: 'USD'
+
+					const formatPrice = useCallback(
+						(price: number, currencyCode = currency.code) => {
+							const formattedPrice = addCommaToNumber(price ?? 0);
+			   
+							// TODO: 정책 정해지면 로직 수정
+							return currencyCode === 'KRW' ? `${formattedPrice}원` : `$${formattedPrice}`;
+						},
+						[currency.code]
+					);
+
+					formatPrice(10); // "$10"
+					formatPrice(1000, 'KRW'); // "1,000원"
+					```
+
+					---
+
+					### 이런 외부 의존성은 매우 많습니다
+					- 시간, 랜덤, 네트워크, 환경변수, 사용자의 설정 등등...
+
+					---
+
+					## 검색과 최적화
 
 					해보진 않았지만 내부를 rescript로 갈아 끼울 수도 있을 것이다.
 					---
 
-					## 결제 수단 노출의 사례는 복잡한 domain을 논리적 함수로 모델링하는 것의 강력함을 보여준다
+					## 결제 수단 노출
+					사례는 복잡한 domain을 논리적 함수로 모델링하는 것의 강력함을 보여준다
 
 					---
 

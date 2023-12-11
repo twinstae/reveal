@@ -23,7 +23,7 @@ section.has-light-background h6 {
   *********************************************/
 :root {
     --r-background-color: #fff;
-    --r-main-font: Lato, sans-serif;
+    --r-main-font: Pretendard, sans-serif;
     --r-main-font-size: 40px;
     --r-main-color: #26282E;
     --r-block-margin: 20px;
@@ -48,6 +48,9 @@ section.has-light-background h6 {
     --r-selection-color: #fff;
     --r-overlay-element-bg-color: 240, 240, 240;
     --r-overlay-element-fg-color: 0, 0, 0;
+
+    word-break: keep-all;
+    text-wrap: balance;
 }
 
 .reveal-viewport {
@@ -185,6 +188,20 @@ section.has-light-background h6 {
     list-style-type: decimal;
 }
 
+.text-sm {
+    font-size: 0.8em;
+}
+
+.hstack {
+    display: flex !important;
+    justify-content: space-around;
+}
+
+.large-code code {
+    font-size: 0.25em;
+    line-height: 1em;
+}
+
 .reveal ul {
     list-style-type: disc;
 }
@@ -239,7 +256,7 @@ section.has-light-background h6 {
     width: 90%;
     margin: var(--r-block-margin) auto;
     text-align: left;
-    font-size: 0.55em;
+    font-size: 0.4em;
     font-family: var(--r-code-font);
     line-height: 1.2em;
     word-wrap: break-word;
@@ -323,6 +340,8 @@ section.has-light-background h6 {
 
 .reveal img {
     margin: var(--r-block-margin) 0;
+    max-height: 50vh;
+    max-width: 30vw;
 }
 
 /*********************************************
