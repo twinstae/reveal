@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="dist/theme/fromm.css">
 
 	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 </head>
 
 <body>
@@ -117,7 +117,7 @@
 					}
 					```
 					---
-					<!-- .slide: class="hstack" -->
+					<div class="hstack">
 					<img src='./textfields.png' class='left' />
 				
 					<div>
@@ -130,10 +130,10 @@
 					- valid, disabled, error
 
 					</div>
+					</div>
 
 					---
-					<!-- .slide: class="large-code hstack" -->
-
+					<div class="hstack">
 					<img src='./imperative.png' class='left' />
 
 					<div>
@@ -145,6 +145,7 @@
 						- ex 값을 입력하면 activated 로 전이
 					- 그런데 전이와 조건문이 너무 많은데?
 
+					</div>
 					</div>
 
 					---
@@ -299,19 +300,164 @@
 					- 시간, 랜덤, 네트워크, 환경변수, 사용자의 설정 등등...
 
 					---
+					<div class="hstack">
+					
+					<img src='./search.png' class='left' />
+
+					<div>
 
 					## 검색과 최적화
 
-					해보진 않았지만 내부를 rescript로 갈아 끼울 수도 있을 것이다.
+					- 내가 좋아하는 아티를 검색하고 싶다
+
+					- 1 사용자가 설정한 언어에 따라서
+					- 2 서버에서 아티스트 목록 가져오기
+					- 3 사용자가 입력한 검색어에 따라서
+					- -> 아티스트를 필터링
+
+					</div>
+					</div>
+					
 					---
 
-					## 결제 수단 노출
-					사례는 복잡한 domain을 논리적 함수로 모델링하는 것의 강력함을 보여준다
+					### 상태 합성하기 이론편
 
+					![](./search-state.svg)
+
+					---
+
+					### 상태 합성하기 실전편
+
+					```ts
+					// 부분 적용, 함수 만드는 고차 함수
+					export const searchPredicate = (searchInput: string) => (arti: ArtiListItemVo) => {
+						return arti.name.includes(searchInput)
+					};
+					```
+
+					```ts
+					import { langAtom } from 'atom/common';
+
+					const [allArtiListAtom] = atomsWithQuery((get) => ({
+						queryKey: ['getAllArtiList', { lang: get(langAtom) }], // 언어에 따라 달라져야 함
+						queryFn: () => getArtiList()
+					}));
+
+					// 의존성 주입
+					const searchArtiListAtom = atom(get => {
+						const artiSearchInput = get(artiSearchInputAtom);
+						const allArtiList = get(allArtiListAtom);
+
+						const isSearchArti = searchPredicate(artiSearchInput);
+						return allArtiList.filter(isSearchArti);
+					})
+					```
+
+					---
+
+					### 요구사항 변경?
+					초성 검색이 되길 원하심<br />(예를 들어 ㄱ 이라고만 쳐도 강혜원이 나오는)
+
+					```ts [1,4,6]
+					import { getRegExp } from 'korean-regexp';
+
+					export const searchPredicate = (searchInput: string) => (arti: ArtiListItemVo) => {
+						const regex = getRegExp(searchInput);
+
+						return regex.test(arti.name)
+					};
+					```
+
+					---
+
+					### 요구사항이 또 변경!
+					- 영어 이름도 검색
+					  - (엔믹스는 NMIXX로도 검색이 되어야)
+					- description도 검색되지만 초성 검색은 되지 않게
+
+					```ts [6-8]
+					import { getRegExp } from 'korean-regexp';
+
+					export const searchPredicate = (searchInput: string) => (arti: ArtiListItemVo) => {
+						const regex = getRegExp(searchInput);
+
+						return LanguageCodeList.some((code) => {
+							return regex.test(arti.searchName[code] ?? '') || (arti.metaDescription?.[code] ?? '').includes(searchInput)
+						});
+					};
+					```
+
+					---
+
+					### 이 과정에서 UI 코드는 한 줄도 건드리지 않음
+					검색 비즈니스 로직을 분리하고 UI 관심사나<br/> jotai 등의 상태 라이브러리와 완전히 분리했기 때문
+
+					---
+					### ui와 연결하기
+
+					쉽죠?
+
+					```tsx
+					const ArtiList = () => {
+						const artiList = useArtiSearchList();
+					
+						return (
+							<ArtiListContainer>
+								{artiList?.map((item) => (
+									<ArtiListItem key={item.id} item={item} />
+								))}
+							</ArtiListContainer>
+						);
+					};
+					```
+
+					---
+
+					### 이런! 성능 이슈가?
+
+					한 글자를 칠 때마다 목록 전체를 리렌더하면서,<br/> react가 가상 돔을 만들고 diff하는 비용이 어마무시 커짐...
+
+					---
+
+					### 순수 함수의 전제
+
+					같은 입력을 넣으면 같은 결과가 나와야 한다
+
+					---
+
+					### 순수 함수는 캐싱 가능하다
+
+					- 입력이 같으면 다시 렌더할 필요가 없다
+					- React.memo는 이런 때 씁니다
+
+					```tsx
+					export ArtiListItem = React.memo(({ item }: ArtiListItemProps) => { ... })
+					```
 					---
 
 					## 결론
 
+					- 최소한의 상태만 밖으로 밀어내자
+					- 상태에서 순수하게 계산하는 로직을 만들자
+					- 의존성을 명시적으로 드러내고 주입하자
+
+					---
+
+					## 시간 관계상 못 다한 이야기
+
+					- 외부 의존성과 효과effect에 대한 깊은 이야기
+					- 상태와 계산을 분리하는 눈을 기르는 법칙에
+					- 시간, 난수 등을 순수하게 다루고 테스트하기
+					- 언어, api, local storage 상태를 합성하기
+					- 결제 로직 순수 함수로 속성 기반 검사하기
+					- 로직에서 데이터(설정, DSL)로 추출하기
+					- router와 연동되는 멀티 스텝 폼, 모달
+					- ...
+
+					---
+					### 더 많은 이야기가 <br/> 원더월 블로그에 올라올 예정입니다^^
+
+					https://tech.wonderwall.kr/
 					
 				</textarea>
 			</section>
