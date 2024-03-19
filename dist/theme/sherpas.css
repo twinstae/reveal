@@ -92,6 +92,10 @@
     height: 100%;
 }
 
+.text-primary {
+    color: var(--primary-500);
+}
+
 .text-excel {
     color: #39b54a;
 }
@@ -135,7 +139,7 @@
     font-size: 2em;
     text-align: center;
     margin-top: 25%;
-    transform: translateY(-25%);
+    transform: translateY(-50%);
     width: 90%;
 }
 
@@ -296,12 +300,9 @@
 .reveal blockquote {
     display: block;
     position: relative;
-    width: 70%;
     margin: var(--r-block-margin) auto;
-    padding: 5px;
-    font-style: italic;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+    padding: 0.25rem 0.25rem 0.25rem 1rem;
+    border-left: 4px solid var(--primary-500);
 }
 
 .reveal blockquote p:first-child,

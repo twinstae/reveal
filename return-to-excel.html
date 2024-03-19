@@ -123,8 +123,11 @@
 					```clojure
 					;; 상태 정의
 					(def main-state
-						(r/atom {:sass-list {:data nil :is-loading false} ;; 서버 상태
-								 :sorting :ASC})) ;; 클라이언트 상태
+							 ;; 서버 상태
+						(r/atom {:sass-list {:data nil
+						                     :is-loading false}
+							 ;; 클라이언트 상태
+						         :sorting :ASC}))
 
 					;; http 요청 정의
 					(defn get-sass-list!
@@ -390,7 +393,143 @@
 
 					</div>
 					</div>
+
+					---
+
+					### tanstack-query 구현체 까보기
+
+					<div class="h-stack">
+
+					![](https://fe-developers.kakaoent.com/static/0d9c9b2e485cc3dc8aa6c600d7af7e3b/78612/thumbnail.png)
+
+					<div>
+
+					- query-client
+					- query-cache
+					- query-observer
+
+					[React Query의 구조와 useQuery 실행 흐름 살펴보기 - 함성준 kakao fe](https://fe-developers.kakaoent.com/2023/230720-react-query/)
+
+					</div>
+					</div>
+					---
+
+					```ts 
+					const observer = new Observer(client, defaultedOptions.value)
+					const state = reactive(observer.getCurrentResult())
+
+					let unsubscribe = () => {}
+					onMount(() => {
+					  unsubscribe = observer.subscribe((result) => {
+					    updateState(state, result)
+					  })
+					})
+
+					onScopeDispose(() => {
+					  unsubscribe()
+					})
+
+					const updater = () => {
+					  observer.setOptions(defaultedOptions.value)
+					  updateState(state, observer.getCurrentResult())
+					}
+
+					watch(defaultedOptions, updater)
+					```
+
+					---
+
+					### reagent 의 상태 primitive 들
+
+
+					- atom : 변경 가능한 원자적 상태
+					- cursor: atom의 특정한 부분을 선택(select)할 수 있음
+					- <span class="text-primary">reaction: 근본 primitive, on-dispose 등 컨트롤 가능</span>
+					- track: react의 useMemo와 비슷한 read-only cursor
+
+					-&gt; unsubscribe 처리를 위해 reaction을 이용하기로 결정!
 					
+					[Managing state: atoms, cursors, Reactions, and tracking - reagent 문서](https://github.com/reagent-project/reagent/blob/master/doc/ManagingState.md)
+					
+					---
+
+					### 구현 + 테스트
+
+					```clojure
+					(defn saas-list-options [] {
+					  :query-key ["saas-list"]
+					  :endpoint  ["/saas-list"]
+					  :parse     #(:saas-list %)
+					})
+
+					(def saas-list-reaction (reaction-query-req saas-list-options))
+
+					(def sorting (r/atom :ASC))
+
+					(def result-reaction
+					  (ratom/reaction #(sort-by (:data @saas-list-reaction)
+					                            @sorting)))
+					;; ...
+					[:<>
+					  [saas-list {:data @result-reaction}]
+					  [:button
+					    {:on-click #(refetch! (saas-list-options))} "새로고침"]
+					  [:button {:on-click #(reset! sotring :DESC)} "최근 결제일 순"]]
+					```
+					
+					---
+
+					## 나가며... 객체지향과 함수형의 조화
+
+					tanstack-query는 복잡한 전역 상태를 들고 캡슐화하고 있는데...
+
+					이거 함수스러운 것일까?
+
+					...
+
+					clojure 창시자인 리치 히키의 말을 들어봅시다.
+
+					---
+
+					> 객체 있죠? 객체는 입출력 장치를 캡슐화하죠. 화면도 캡슐화 해요. 제가 화면을 직접 건드리진 못하죠.
+					>
+					> 마우스도 있어요. 마우스도 제가 직접 제어하진 못하죠.
+					> 
+					> 이럴 때 쓰려고 객체가 있는 거예요. 이런 데에선 객체가 바른 역할을 합니다.
+					>
+					> 하지만 정보에 적용하라고 존재한 적은 없어요. 정보를 객체에 적용했다면 그건 명확한 잘못입니다.
+					>
+					> simple made easy - rich hickey 클로저 만든 사람
+
+					---
+
+					서버도, 서버 캐시도 객체로 다루자
+
+					- 서버 상태는 우리가 제어할 수 없다.
+					- 메시지만 보낼 수 있다.
+					- 우리가 관심 없는 복잡한 내부 상태를 들고 있다
+					- 지속적으로 캐시를 동기화 해줘야 한다
+
+					-> tanstack-query 덕분에 <br/> 우리는 plain data만 신경 쓰면서 계산하고 합성할 수 있다
+
+					---
+
+					객체지향과 함수형의 벽을 허물고 선언형 합성으로 나아가자
+
+					![](https://t1.daumcdn.net/cfile/blog/99320C4D5B4B7B2B18)
+
+					이 주제가 더 궁금하신 분은 제가 이런 글도 썻습니다.
+
+					[합성으로 연결되는 함수형과 객체지향](https://twinstae.github.io/composable/)
+
+					---
+
+					@tanstack/reagent-query 를 비롯해서 sherpas에서 개발한 여러 라이브러리를 소개하고 공유할 예정입니다. (언젠가)
+
+					- js interop으로 headless component 라이브러리를 이용한 디자인 시스템 구축하기
+					- reagent에서 final-form으로 선언적으로 폼 상태 관리하기
+					- [siheom] component test를 위한 보일러 플레이트 없는 DSL과 인터프리터
+					- pandacss cljs reagent plugin + LSP
 				</textarea>
 			</section>
 		</div>
