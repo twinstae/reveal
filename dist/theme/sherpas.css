@@ -40,8 +40,8 @@
     --r-heading-text-shadow: none;
     --r-heading-font-weight: bold;
     --r-heading1-text-shadow: none;
-    --r-heading1-size: 2em;
-    --r-heading2-size: 1.75em;
+    --r-heading1-size: 1.75em;
+    --r-heading2-size: 1.5em;
     --r-heading3-size: 1.25em;
     --r-heading4-size: 1em;
     --r-code-font: monospace;
@@ -83,6 +83,7 @@
 
 .reveal .slides section,
 .reveal .slides section>section {
+    box-sizing: border-box;
     line-height: 1.3;
     font-weight: inherit;
 
@@ -135,12 +136,30 @@
     gap: 16px;
 }
 
+.v-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .reveal .hero-center {
     font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-top: 25%;
-    transform: translateY(-50%);
-    width: 90%;
+    width: 100%;
+    height: 100%;
+}
+
+.reveal .just-center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .profile {
@@ -300,9 +319,13 @@
 .reveal blockquote {
     display: block;
     position: relative;
+    font-size: 36px;
     margin: var(--r-block-margin) auto;
-    padding: 0.25rem 0.25rem 0.25rem 1rem;
-    border-left: 4px solid var(--primary-500);
+    padding: 5px;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 2px 4px -4px rgb(0 0 0 / 0.1);
+    border-left: 4px solid var(--primary-400);
 }
 
 .reveal blockquote p:first-child,
@@ -317,7 +340,6 @@
 .reveal pre {
     display: block;
     position: relative;
-    width: 90%;
     margin: var(--r-block-margin) 0;
     text-align: left;
     font-size: 0.6em;
@@ -405,9 +427,6 @@
     margin: var(--r-block-margin) 0;
 }
 
-img {
-    max-height: 50vh !important;
-}
 
 /*********************************************
   * LINKS
@@ -468,4 +487,8 @@ img {
     .backgrounds {
         background-color: var(--r-background-color);
     }
+}
+
+.h-full {
+    height: 100%;
 }
